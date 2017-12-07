@@ -11,6 +11,9 @@ RUN apk add --update --no-cache --virtual .build-deps git \
     && npm install --force \
     && cd node_modules/geoip-lite \
 		&& npm run-script updatedb \
+    && npm install -g grunt-cli \
+    && grunt \
+    && npm uninstall -g grunt-cli \
     && npm cache clean --force  \
     && apk del .build-deps
 
